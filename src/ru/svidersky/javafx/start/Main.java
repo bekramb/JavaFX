@@ -1,4 +1,4 @@
-package ru.javabegin.training.fastjava2.javafx.start;
+package ru.svidersky.javafx.start;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -6,11 +6,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import ru.javabegin.training.fastjava2.javafx.controllers.MainController;
-import ru.javabegin.training.fastjava2.javafx.objects.Lang;
-import ru.javabegin.training.fastjava2.javafx.utils.LocaleManager;
+import ru.svidersky.javafx.controllers.MainController;
+import ru.svidersky.javafx.objects.Lang;
+import ru.svidersky.javafx.utils.LocaleManager;
 
 import java.io.IOException;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.Locale;
 import java.util.Observable;
 import java.util.Observer;
@@ -18,9 +20,8 @@ import java.util.ResourceBundle;
 
 public class Main extends Application implements Observer {
 
-
     private static final String FXML_MAIN = "../fxml/main.fxml";
-    public static final String BUNDLES_FOLDER = "ru.javabegin.training.fastjava2.javafx.bundles.Locale";
+    public static final String BUNDLES_FOLDER = "ru.svidersky.javafx.bundles.Locale";
 
     private Stage primaryStage;
 
@@ -37,7 +38,6 @@ public class Main extends Application implements Observer {
         createGUI(LocaleManager.RU_LOCALE);
     }
 
-
     public static void main(String[] args) {
         launch(args);
     }
@@ -48,8 +48,6 @@ public class Main extends Application implements Observer {
         VBox newNode = loadFXML(lang.getLocale()); // получить новое дерево компонетов с нужной локалью
         currentRoot.getChildren().setAll(newNode.getChildren());// заменить старые дочерник компонента на новые - с другой локалью
     }
-
-
 
     // загружает дерево компонентов и возвращает в виде VBox (корневой элемент в FXML)
     private VBox loadFXML(Locale locale) {
@@ -62,15 +60,14 @@ public class Main extends Application implements Observer {
 
         try {
             node = (VBox) fxmlLoader.load();
-
             mainController = fxmlLoader.getController();
             mainController.addObserver(this);
-            primaryStage.setTitle(fxmlLoader.getResources().getString("address_book"));
-
+            primaryStage.setTitle(fxmlLoader.getResources().getString("birthday_book") +
+                    "       " + fxmlLoader.getResources().getString("today") +
+                    " " + (MainController.TODAY).format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)));
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return node;
     }
 

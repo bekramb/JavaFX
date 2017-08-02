@@ -1,4 +1,4 @@
-package ru.javabegin.training.fastjava2.javafx.utils;
+package ru.svidersky.javafx.utils;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -23,19 +23,12 @@ public class DialogManager {
         alert.showAndWait();
     }
 
-
     public static Optional<ButtonType> showConfirmDialog(String title, String text){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle(title);
         alert.setContentText(text);
-
         alert.setHeaderText(null);
         Optional<ButtonType> result = alert.showAndWait();
         return result;
-
     }
-
-
-
-
 }

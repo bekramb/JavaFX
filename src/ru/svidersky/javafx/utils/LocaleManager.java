@@ -1,13 +1,12 @@
-package ru.javabegin.training.fastjava2.javafx.utils;
+package ru.svidersky.javafx.utils;
 
-import ru.javabegin.training.fastjava2.javafx.objects.Lang;
+import ru.svidersky.javafx.objects.Lang;
 
 import java.util.Locale;
 
 public class LocaleManager {
 
     public static final Locale RU_LOCALE = new Locale("ru");
-    public static final Locale EN_LOCALE = new Locale("en");
 
     private static Lang currentLang;
 

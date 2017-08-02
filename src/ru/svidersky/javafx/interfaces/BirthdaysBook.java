@@ -1,9 +1,9 @@
-package ru.javabegin.training.fastjava2.javafx.interfaces;
+package ru.svidersky.javafx.interfaces;
 
 import javafx.collections.ObservableList;
-import ru.javabegin.training.fastjava2.javafx.objects.Person;
+import ru.svidersky.javafx.objects.Person;
 
-public interface AddressBook {
+public interface BirthdaysBook {
 
     boolean add(Person person);
 
@@ -14,5 +14,4 @@ public interface AddressBook {
     ObservableList<Person> findAll();
 
     ObservableList<Person> find(String text);
-
 }
