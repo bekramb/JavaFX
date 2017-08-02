@@ -73,6 +73,7 @@ public class EditDialogController implements Initializable {
         if (!checkValues()) {
             return;
         }
+
         person.setFio(txtFIO.getText());
         person.setMonth(String.valueOf(cbMonth.getSelectionModel().getSelectedIndex()+1));
         person.setDay(Integer.valueOf(txtDay.getText()));
